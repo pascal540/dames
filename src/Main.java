@@ -1,40 +1,38 @@
 
+import javafx.scene.Group;
+import dessinplateau.DessinePlateau;
 import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
+
+// import javafx.fxml.FXMLLoader;
+// import javafx.scene.Scene;
+// import javafx.scene.layout.GridPane;
+// import javafx.scene.paint.Color;
+// import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        System.out.println("Start methode appellée");
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("damier.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1024, 800);
-        primaryStage.setResizable(false);
-        primaryStage.setTitle("Jeu de Dames");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-        primaryStage.centerOnScreen();
-
-        // Stage fenetreDeux = new Stage();
-        // fenetreDeux.setTitle("Fenetre deux");
-        // fenetreDeux.setWidth(300);
-        // fenetreDeux.setHeight(300);
-        // fenetreDeux.show();
-
-        // // Lambda expression
-        // new Thread(() -> {
-        // try {
-        // Thread.sleep(5000);
-        // Platform.runLater(() -> fenetreDeux.hide());
-        // } catch (InterruptedException e) {
-        // e.printStackTrace();
-        // }
-        // }).start();
+        
+       
+         Partie.getinstancePartie().nouvellePartie();// Creation d'une nouvelle partie
+         DessinePlateau dessinePlateau= new DessinePlateau(primaryStage);
+         dessinePlateau.dessineGrille();
+        
+       
 
     }
+
+    // private void textDisplay(GridPane grid, String theText, int row, int col) {
+    // Text text = new Text();
+    // text.setWrappingWidth(50);
+    // text.setText(theText);
+    // text.setTextAlignment(TextAlignment.CENTER);
+    // GridPane.setRowIndex(text, row);
+    // GridPane.setColumnIndex(text, col);
+    // grid.getChildren().addAll(text);
+    // }
 
     public static void main(String[] args) throws Exception {
         launch();
