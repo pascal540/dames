@@ -1,5 +1,5 @@
 
-import javafx.scene.Group;
+// import javafx.scene.Group;
 import dessinplateau.DessinePlateau;
 import javafx.application.Application;
 
@@ -17,8 +17,8 @@ public class Main extends Application {
         
        
          Partie.getinstancePartie().nouvellePartie();// Creation d'une nouvelle partie
-         DessinePlateau dessinePlateau= new DessinePlateau(primaryStage);
-         dessinePlateau.dessineGrille();
+          DessinePlateau dessinePlateau= new DessinePlateau(primaryStage);
+           dessinePlateau.dessineGrille();
         
        
 
