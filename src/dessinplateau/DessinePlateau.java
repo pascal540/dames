@@ -1,6 +1,7 @@
 package dessinplateau;
 
 import constantes.Constantes;
+import javafx.event.EventHandler;
 // import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -14,6 +15,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 public class DessinePlateau {
 
@@ -21,7 +23,7 @@ public class DessinePlateau {
     Group root = new Group();
     Scene scene = new Scene(root, 1024, 768, Color.BEIGE);
 
-    private Stage _primaryStage;
+    private Stage _primaryStage; // fenetre principale de l'application 
     private GridPane _grille;
     private StackPane _stackpane;
     private Image _pionNoir;
@@ -38,8 +40,7 @@ public class DessinePlateau {
         // this._stackpane = new StackPane();
         this._pionNoir = new Image("/images/pionn.png");
         this._pionBlanc = new Image("/images/pionb.png");
-        // this._pionBlanc = new Image("/images/pion_test.png");
-
+      
     }
 
     public void dessineGrille() {
@@ -53,6 +54,15 @@ public class DessinePlateau {
 
                     _stackpane.getChildren().add(rectangle);
                     ImageView imageView = new ImageView(); // ajout imageview
+                    //     imageView.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+                    //         @Override
+                    //         public void handle(MouseEvent e) {
+                    //             System.out.println("Clic image");
+
+                    //         }
+
+                    // });
 
                     // toutes les deux cases
                     if ((ligne % 2 == 0 && col % 2 == 0) || (ligne % 2 != 0 && col % 2 != 0)) {
@@ -86,8 +96,20 @@ public class DessinePlateau {
 
                 }
             }
-
+          
         }
+            this._grille.setOnMousePressed(new EventHandler<MouseEvent>(){
+
+            @Override
+            public void handle(MouseEvent e) {
+                  System.out.println("grille cliquée");
+                    System.out.println("Ligne  " + GridPane.getRowIndex(_stackpane));
+                    System.out.println("Colonne " +GridPane.getColumnIndex(_stackpane));
+               
+                
+            }
+              
+          });
         // Posiitonnement du damier sur la fenetre principale
         this._grille.setLayoutX(Constantes.POSITION_X_GRILLE);
         this._grille.setLayoutY(Constantes.POSITION_Y_GRILLE);

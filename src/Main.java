@@ -19,21 +19,11 @@ public class Main extends Application {
          Partie.getinstancePartie().nouvellePartie();// Creation d'une nouvelle partie
           DessinePlateau dessinePlateau= new DessinePlateau(primaryStage);
            dessinePlateau.dessineGrille();
-        
-       
+               
 
     }
 
-    // private void textDisplay(GridPane grid, String theText, int row, int col) {
-    // Text text = new Text();
-    // text.setWrappingWidth(50);
-    // text.setText(theText);
-    // text.setTextAlignment(TextAlignment.CENTER);
-    // GridPane.setRowIndex(text, row);
-    // GridPane.setColumnIndex(text, col);
-    // grid.getChildren().addAll(text);
-    // }
-
+    
     public static void main(String[] args) throws Exception {
         launch();
 
