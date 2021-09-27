@@ -56,17 +56,20 @@ public class DessinePlateau {
 
                     // toutes les deux cases
                     if ((ligne % 2 == 0 && col % 2 == 0) || (ligne % 2 != 0 && col % 2 != 0)) {
-                        // rectangle.setFill(Color.GREY); // cases 'blanches'
+                        // cases 'blanches'
                         rectangle.setFill(Color.valueOf("#856D4D"));
-                        imageView.setImage(this._pionBlanc);
+
                     } else {
-                        // rectangle.setFill(Color.DARKGREY); // cases 'noires'
+                        // cases 'noires'
                         rectangle.setFill(Color.valueOf("#4E3D28"));
-                        if (ligne != 4 && ligne != 5) {
+                        if (ligne < 4) {
                             imageView.setImage(this._pionNoir);
 
+                        } else if (ligne > 5) {
+                            imageView.setImage(this._pionBlanc);
                         }
                     }
+
                     _stackpane.getChildren().add(imageView);
 
                     // Ajout des rectangles aux lignes colonnes
