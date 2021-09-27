@@ -36,8 +36,9 @@ public class DessinePlateau {
         this._primaryStage = primaryStage;
         this._grille = new GridPane();
         // this._stackpane = new StackPane();
-        this._pionNoir = new Image("/images/pion_n.png");
-        this._pionBlanc = new Image("/images/pion_b.png");
+        this._pionNoir = new Image("/images/pionn.png");
+        this._pionBlanc = new Image("/images/pionb.png");
+        // this._pionBlanc = new Image("/images/pion_test.png");
 
     }
 
@@ -47,46 +48,46 @@ public class DessinePlateau {
             for (int col = 0; col < Constantes.NBRE_LIGNES_DAMIER; col++) {
                 if (ligne != Constantes.NBRE_LIGNES_DAMIER) {
                     _stackpane = new StackPane();
-                    
+
                     Rectangle rectangle = new Rectangle(Constantes.LARGEUR_CASE, Constantes.LARGEUR_CASE);
 
                     _stackpane.getChildren().add(rectangle);
-                    ImageView imageView = new ImageView(); // ajout imageview 
+                    ImageView imageView = new ImageView(); // ajout imageview
 
                     // toutes les deux cases
                     if ((ligne % 2 == 0 && col % 2 == 0) || (ligne % 2 != 0 && col % 2 != 0)) {
-                        rectangle.setFill(Color.WHITE);
-                         imageView.setImage(this._pionBlanc);
-                     } else {
-                         rectangle.setFill(Color.BLACK);
-                         if (ligne != 4 && ligne != 5) {
-                             imageView.setImage(this._pionNoir);
-                           
-                         }
-                     }
-                     _stackpane.getChildren().add(imageView);
+                        // rectangle.setFill(Color.GREY); // cases 'blanches'
+                        rectangle.setFill(Color.valueOf("#856D4D"));
+                        imageView.setImage(this._pionBlanc);
+                    } else {
+                        // rectangle.setFill(Color.DARKGREY); // cases 'noires'
+                        rectangle.setFill(Color.valueOf("#4E3D28"));
+                        if (ligne != 4 && ligne != 5) {
+                            imageView.setImage(this._pionNoir);
+
+                        }
+                    }
+                    _stackpane.getChildren().add(imageView);
 
                     // Ajout des rectangles aux lignes colonnes
                     this._grille.getChildren().add(_stackpane);
-                    
-                    // GridPane.setRowIndex(rectangle, ligne); // placement de
-                    //  GridPane.setColumnIndex(rectangle, col); // colo col
 
-                     GridPane.setRowIndex(_stackpane, ligne);
+                    // GridPane.setRowIndex(rectangle, ligne); // placement de
+                    // GridPane.setColumnIndex(rectangle, col); // colo col
+
+                    GridPane.setRowIndex(_stackpane, ligne);
                     GridPane.setColumnIndex(_stackpane, col);
 
                     // GridPane.setRowIndex(imageView, ligne); // placement d'un
                     // GridPane.setColumnIndex(imageView, col); // colo col
 
-                     
- 
                 }
             }
 
         }
         // Posiitonnement du damier sur la fenetre principale
-          this._grille.setLayoutX(Constantes.POSITION_X_GRILLE);
-          this._grille.setLayoutY(Constantes.POSITION_Y_GRILLE);
+        this._grille.setLayoutX(Constantes.POSITION_X_GRILLE);
+        this._grille.setLayoutY(Constantes.POSITION_Y_GRILLE);
 
         // Ceation d'une ligne autour de la grille
         // Taille
